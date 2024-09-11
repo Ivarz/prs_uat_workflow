@@ -31,6 +31,7 @@ process demo {
     script:
     """
     source ${project_dir}/venv/bin/activate && python ${projectDir}/demo.py ${project_dir}
+	bash ${project_dir}/failed_320.sh
     """
 }
 
