@@ -32,7 +32,7 @@ def generate_line_chart_data(num_points, lang):
     if num_points < 0:
         num_points = 1
 
-    x_values = np.linspace(0, 10, num_points)
+    x_values = np.linspace(0, 100, num_points)
     y_values1 = np.sin(x_values)
     y_values2 = np.cos(x_values)
 
@@ -99,6 +99,7 @@ def generate_test_msword(input_json, value, lang):
         doc.add_paragraph("We calculated a sum: " + str(a) + "+" + str(b) + "=" + str(value))
         doc.add_paragraph("You have provided the text document below: ")
         doc.add_paragraph(text)
+        doc.add_paragraph("UAT tests dokumenta satura modifikācijai")
         doc.save(path + "/output/files/my_word_en.docx")
         return "/output/files/my_word_en.docx"
 
@@ -112,6 +113,19 @@ def generate_test_dt(input_json, lang):
         oper_label = "Operation"
         res_label = "Result"
         caption = "Calculations"
+
+    data = [
+            [input_json["field_a"]["value"], '+', input_json["field_b"]["value"],
+             input_json["field_a"]["value"] + input_json["field_b"]["value"]],
+            [input_json["field_a"]["value"], '-', input_json["field_b"]["value"],
+             input_json["field_a"]["value"] - input_json["field_b"]["value"]],
+            [input_json["field_a"]["value"], '*', input_json["field_b"]["value"],
+             input_json["field_a"]["value"] * input_json["field_b"]["value"]],
+            [input_json["field_a"]["value"], '/', input_json["field_b"]["value"],
+             round(input_json["field_a"]["value"] / input_json["field_b"]["value"] * 100) / 100],
+        ]
+    for i in range(100):
+        data.append([str(i), str(i+1), str(i+2), str(i+3)])
 
     dt = {
         'caption': caption,
@@ -144,7 +158,9 @@ def generate_test_chart(input_json, sum, lang):
     values = [a, b, sum]
 
     # Create a bar chart
-    plt.bar(categories, values)
+    a = np.linspace(0, 100)
+    b = np.linspace(100, 200)
+    plt.scatter(a, b)
 
     if lang == 'lv':
         # Add title and labels

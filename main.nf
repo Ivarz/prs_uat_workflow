@@ -31,7 +31,6 @@ process demo {
     script:
     """
     source ${project_dir}/venv/bin/activate && python ${projectDir}/demo.py ${project_dir}
-	exit -9
     """
 }
 
