@@ -287,6 +287,7 @@ output_data = {
         "myLine_en": generate_line_chart_data(sum_value, 'en'),
         "risk_lv": generate_risk_score_chartjs(score=input_data["field_a"]["value"], lang='lv'),
         "risk_en": generate_risk_score_chartjs(score=input_data["field_a"]["value"], lang='en'),
+        "radar": generate_radar_chart(),
     },
     "files": {
         "MyWord_lv": generate_test_msword(input_data, sum_value, 'lv'),
