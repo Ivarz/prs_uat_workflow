@@ -26,6 +26,95 @@ def calculate_sum(input_json):
     sum_value = field_a_value + field_b_value
     return sum_value
 
+def generateLabels():
+    return []
+
+def generateData(val):
+    return [val]*12
+
+COLORS = {
+  'red': 'rgb(255, 99, 132)',
+  'orange': 'rgb(255, 159, 64)',
+  'yellow': 'rgb(255, 205, 86)',
+  'green': 'rgb(75, 192, 192)',
+  'blue': 'rgb(54, 162, 235)',
+  'purple': 'rgb(153, 102, 255)',
+  'grey': 'rgb(201, 203, 207)'
+}
+
+def generate_radar_chart():
+    data = {
+      'labels': ['foo', 'bar', 'baz'],
+      'datasets': [
+        {
+          'label': 'D0',
+          'data': generateData(1),
+          'borderColor': COLORS['red'],
+          # 'backgroundColor': Utils.transparentize(Utils.CHART_COLORS.red),
+        },
+        {
+          'label': 'D1',
+          'data': generateData(2),
+          'borderColor': COLORS['orange'],
+          'hidden': 'true',
+          # 'backgroundColor': Utils.transparentize(Utils.CHART_COLORS.orange),
+          'fill': '-1'
+        },
+        {
+          'label': 'D2',
+          'data': generateData(3),
+          'borderColor': COLORS['yellow'],
+          # 'backgroundColor: Utils.transparentize(Utils.CHART_COLORS.yellow),
+          'fill': '1'
+        },
+        {
+          'label': 'D3',
+          'data': generateData(4),
+          'borderColor': COLORS['green'],
+          # 'backgroundColor': Utils.transparentize(Utils.CHART_COLORS.green),
+          'fill': 'false'
+        },
+        {
+          'label': 'D4',
+          'data': generateData(5),
+          'borderColor': COLORS['blue'],
+          # 'backgroundColor': Utils.transparentize(Utils.CHART_COLORS.blue),
+          'fill': '-1'
+        },
+        {
+          'label': 'D5',
+          'data': generateData(6),
+          'borderColor': COLORS['purple'],
+          # 'backgroundColor': Utils.transparentize(Utils.CHART_COLORS.purple),
+          'fill': '-1'
+        },
+        {
+          'label': 'D6',
+          'data': generateData(7),
+          'borderColor': COLORS['grey'],
+          # 'backgroundColor': Utils.transparentize(Utils.CHART_COLORS.grey),
+          'fill': {'value': '85'}
+        }
+      ]
+    }
+    config = {
+      'type': 'radar',
+      'data': data,
+      'options': {
+        'plugins': {
+          'filler': {
+            'propagate': 'false'
+          },
+          'samples-filler-analyser': {
+            'target': 'chart-analyser'
+          }
+        },
+        'interaction': {
+          'intersect': 'false'
+        }
+      }
+    }
+    return config
 
 def generate_line_chart_data(num_points, lang):
     num_points = int(num_points)
