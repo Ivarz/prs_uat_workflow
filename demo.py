@@ -53,6 +53,50 @@ BACK_COLORS = {
   'grey': 'rgba(201, 203, 207, 0.1)'
 }
 
+BAR_COLORS = {
+  'red': 'rgba(255, 99, 132, 0.5)',
+  'orange': 'rgba(255, 159, 64, 0.5)',
+  'yellow': 'rgba(255, 205, 86, 0.5)',
+  'green': 'rgba(75, 192, 192, 0.5)',
+  'blue': 'rgba(54, 162, 235, 0.5)',
+  'purple': 'rgba(153, 102, 255, 0.5)',
+  'grey': 'rgba(201, 203, 207, 0.5)'
+}
+def generate_polar_chart():
+    data = {
+      'labels': [f'risks_{x}' for x in range(10)],
+      'datasets': [
+        {
+          'label': 'Dataset 1',
+          'data': [random.uniform(1.0, 100.0) for _ in range(5)],
+          'backgroundColor': [
+            BAR_COLORS['red'],
+            BAR_COLORS['orange'],
+            BAR_COLORS['yellow'],
+            BAR_COLORS['green'],
+            BAR_COLORS['blue']
+          ]
+        }
+      ]
+    }
+    config = {
+      'type': 'polarArea',
+      'data': data,
+      'options': {
+        'responsive': 'true',
+        'plugins': {
+          'legend': {
+            'position': 'top',
+          },
+          'title': {
+            'display': 'true',
+            'text': 'Chart.js Polar Area Chart'
+          }
+        }
+      },
+    }
+    return config
+
 def generate_radar_chart():
     data = {
       'labels': [f'L{x}' for x in range(12)],
@@ -299,6 +343,7 @@ output_data = {
         "risk_lv": generate_risk_score_chartjs(score=input_data["field_a"]["value"], lang='lv'),
         "risk_en": generate_risk_score_chartjs(score=input_data["field_a"]["value"], lang='en'),
         "radar": generate_radar_chart(),
+        "polar": generate_polar_chart(),
     },
     "files": {
         "MyWord_lv": generate_test_msword(input_data, sum_value, 'lv'),
