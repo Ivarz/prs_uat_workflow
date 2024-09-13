@@ -140,6 +140,13 @@ def generate_test_dt(input_json, lang):
     return dt
 
 
+def generate_heatmap(locale):
+    plt.imshow(np.random.rand(10, 20))
+    outname = f"/output/files/heatmap_{locale}.png"
+    plt.savefig(outname)
+    plt.close()
+    return outname
+
 def generate_test_chart(input_json, sum, lang):
     a = input_json["field_a"]["value"]
     b = input_json["field_b"]["value"]
@@ -196,7 +203,9 @@ output_data = {
         "MyWord_lv": generate_test_msword(input_data, sum_value, 'lv'),
         "MyWord_en": generate_test_msword(input_data, sum_value, 'en'),
         "MyChart_lv": generate_test_chart(input_data, sum_value, 'lv'),
-        "MyChart_en": generate_test_chart(input_data, sum_value, 'en')
+        "MyChart_en": generate_test_chart(input_data, sum_value, 'en'),
+        "heatmap_en": generate_heatmap('en'),
+        "heatmap_lv": generate_heatmap('lv'),
     }
 }
 
