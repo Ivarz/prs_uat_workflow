@@ -142,7 +142,7 @@ def generate_test_dt(input_json, lang):
 
 def generate_heatmap(locale):
     plt.imshow(np.random.rand(10, 20))
-    outname = f"/output/files/heatmap_{locale}.png"
+    outname = f"{path}/output/files/heatmap_{locale}.png"
     plt.savefig(outname)
     plt.close()
     return outname
