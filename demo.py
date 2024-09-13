@@ -44,7 +44,7 @@ COLORS = {
 
 def generate_radar_chart():
     data = {
-      'labels': ['foo', 'bar', 'baz'],
+      'labels': [f'L{x}' for x in range(12)],
       'datasets': [
         {
           'label': 'D0',
