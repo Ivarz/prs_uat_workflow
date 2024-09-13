@@ -5,6 +5,7 @@ import numpy as np
 from docx import Document
 import matplotlib.pyplot as plt
 from risk_score_chartjs import generate_risk_score_chartjs
+import random
 
 path = sys.argv[1]
 
@@ -30,7 +31,7 @@ def generateLabels():
     return []
 
 def generateData(val):
-    return [val]*12
+    return [val+random.uniform(-0.5, 0.5) for x in range(12)]
 
 COLORS = {
   'red': 'rgb(255, 99, 132)',
@@ -42,6 +43,16 @@ COLORS = {
   'grey': 'rgb(201, 203, 207)'
 }
 
+BACK_COLORS = {
+  'red': 'rgba(255, 99, 132, 0.1)',
+  'orange': 'rgba(255, 159, 64, 0.1)',
+  'yellow': 'rgba(255, 205, 86, 0.1)',
+  'green': 'rgba(75, 192, 192, 0.1)',
+  'blue': 'rgba(54, 162, 235, 0.1)',
+  'purple': 'rgba(153, 102, 255, 0.1)',
+  'grey': 'rgba(201, 203, 207, 0.1)'
+}
+
 def generate_radar_chart():
     data = {
       'labels': [f'L{x}' for x in range(12)],
@@ -50,49 +61,49 @@ def generate_radar_chart():
           'label': 'D0',
           'data': generateData(1),
           'borderColor': COLORS['red'],
-          # 'backgroundColor': Utils.transparentize(Utils.CHART_COLORS.red),
+          'backgroundColor': BACK_COLORS['red']
         },
         {
           'label': 'D1',
           'data': generateData(2),
           'borderColor': COLORS['orange'],
           'hidden': 'true',
-          # 'backgroundColor': Utils.transparentize(Utils.CHART_COLORS.orange),
+          'backgroundColor': BACK_COLORS['orange'],
           'fill': '-1'
         },
         {
           'label': 'D2',
           'data': generateData(3),
           'borderColor': COLORS['yellow'],
-          # 'backgroundColor: Utils.transparentize(Utils.CHART_COLORS.yellow),
+          'backgroundColor': BACK_COLORS['yellow'],
           'fill': '1'
         },
         {
           'label': 'D3',
           'data': generateData(4),
           'borderColor': COLORS['green'],
-          # 'backgroundColor': Utils.transparentize(Utils.CHART_COLORS.green),
+          'backgroundColor': BACK_COLORS['green'],
           'fill': 'false'
         },
         {
           'label': 'D4',
           'data': generateData(5),
           'borderColor': COLORS['blue'],
-          # 'backgroundColor': Utils.transparentize(Utils.CHART_COLORS.blue),
+          'backgroundColor': BACK_COLORS['blue'],
           'fill': '-1'
         },
         {
           'label': 'D5',
           'data': generateData(6),
           'borderColor': COLORS['purple'],
-          # 'backgroundColor': Utils.transparentize(Utils.CHART_COLORS.purple),
+          'backgroundColor': BACK_COLORS['purple'],
           'fill': '-1'
         },
         {
           'label': 'D6',
           'data': generateData(7),
           'borderColor': COLORS['grey'],
-          # 'backgroundColor': Utils.transparentize(Utils.CHART_COLORS.grey),
+          'backgroundColor': BACK_COLORS['grey'],
           'fill': {'value': '85'}
         }
       ]
