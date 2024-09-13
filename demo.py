@@ -64,7 +64,7 @@ BAR_COLORS = {
 }
 def generate_polar_chart():
     data = {
-      'labels': [f'risks_{x}' for x in range(10)],
+      'labels': [f'risks_{x}' for x in range(5)],
       'datasets': [
         {
           'label': 'Dataset 1',
